@@ -1,0 +1,11 @@
+@import "variables";
+
+.main {
+  background-color: $color-white-grey;
+  width: 100%;
+  min-height: min-content;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: max-content;
+  justify-content: center;
+}

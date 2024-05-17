@@ -1,0 +1,10 @@
+@import "variables";
+
+.container {
+  max-width: $max-width;
+  width: 100%;
+  min-height: min-content;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: min-content max-content;
+}
