@@ -1,0 +1,74 @@
+@import "../variables.scss";
+
+.productContent {
+  padding: $padding-size;
+  background-color: $color-white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 860px;
+  width: 100%;
+}
+
+.productHero {
+  display: flex;
+}
+
+.productHeroImage {
+  flex-basis: 1;
+  max-width: 680px;
+  width: 100%;
+}
+
+.productHeroData {
+  padding-top: $padding-size;
+  display: flex;
+  flex-direction: column;
+
+  span {
+    font-size: 14px;
+    margin-bottom: $margin-size;
+  }
+
+  h2 {
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 600;
+  }
+
+  p {
+    padding: $padding-size 0;
+    font-size: 46px;
+    font-weight: 400;
+
+    span {
+      vertical-align: text-top;
+    }
+  }
+
+  button {
+    border: 0;
+    color: $color-white;
+    background-color: $color-blue;
+    font-weight: 700;
+    font-size: 16px;
+    max-width: 250px;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 6px;
+  }
+}
+
+.productDescription {
+  max-width: 680px;
+  padding-top: $padding-size;
+  h3 {
+    font-size: 28px;
+    font-weight: 300;
+  }
+
+  p {
+    font-size: 16px;
+    padding: $padding-size 0;
+  }
+}
