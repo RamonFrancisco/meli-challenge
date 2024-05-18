@@ -3,7 +3,7 @@
 .container {
   max-width: $max-width;
   width: 100%;
-  min-height: min-content;
+  min-height: 100vh;
   margin: 0 auto;
   display: grid;
   grid-template-rows: min-content max-content;

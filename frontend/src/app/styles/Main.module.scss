@@ -3,8 +3,9 @@
 .main {
   background-color: $color-white-grey;
   width: 100%;
-  min-height: min-content;
+  height: 100%;
   margin: 0 auto;
+  padding-bottom: 20px;
   display: grid;
   grid-template-columns: max-content;
   justify-content: center;
