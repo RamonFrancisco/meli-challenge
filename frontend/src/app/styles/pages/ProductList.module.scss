@@ -1,0 +1,45 @@
+@import "../variables.scss";
+
+.productListContent {
+  background-color: $color-white;
+  display: flex;
+  flex-direction: column;
+}
+
+.productListItem {
+  display: flex;
+  margin: $margin-size;
+  align-items: flex-start;
+
+  span {
+    font-size: 12px;
+  }
+}
+
+.productListItemThumbnail {
+  width: 180px;
+  height: 180px;
+  border-radius: 4px;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.productListItemDescription {
+  margin-left: $margin-size;
+  display: flex;
+  flex-direction: column-reverse;
+
+  p {
+    font-size: 24px;
+    padding: $padding-size 0;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: normal;
+  }
+}
