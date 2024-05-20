@@ -1,60 +1,57 @@
+"use client";
+
+import Error from "@/app/components/error";
+import Loading from "@/app/components/loading";
 import ProductItem from "@/app/components/productItem";
+import { useBreadcrumb } from "@/app/context/breadcrumb-context";
+import ProductServices from "@/app/services/Product";
 import styles from "@/app/styles/pages/ProductList.module.scss";
+import { useCallback, useEffect, useState } from "react";
 
-const items = [
-  {
-    id: "123",
-    title: "Moto G6 Muito Conservado 64gbtela 5.7 Vejam As Fotos ",
-    price: {
-      currency: "BRL",
-      amount: 1840,
-      decimals: 0,
-    },
-    picture_url:
-      "https://http2.mlstatic.com/D_607581-MLA74463235934_022024-O.jpg",
-    condition: "new",
-    free_shipping: true,
-  },
-  {
-    id: "431",
-    title: "Moto G5 Muito Conservado 64gbtela 5.7 Vejam As Fotos ",
-    price: {
-      currency: "BRL",
-      amount: 5555,
-      decimals: 0,
-    },
-    picture_url:
-      "https://http2.mlstatic.com/D_607581-MLA74463235934_022024-O.jpg",
-    condition: "new",
-    free_shipping: true,
-  },
-  ,
-  {
-    id: "431",
-    title: "Moto G5 Muito Conservado 64gbtela 5.7 Vejam As Fotos ",
-    price: {
-      currency: "BRL",
-      amount: 555555,
-      decimals: 0,
-    },
-    picture_url:
-      "https://http2.mlstatic.com/D_607581-MLA74463235934_022024-O.jpg",
-    condition: "new",
-    free_shipping: true,
-  },
-];
+export default function ProductList({ searchParams }) {
+  const [items, setItems] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const { search } = searchParams;
+  const { setBreadcrumbs } = useBreadcrumb();
 
-export default function ProductList() {
+  const getData = useCallback(async () => {
+    setLoading(true);
+    try {
+      const { items, categories } = await ProductServices.searchProducts({
+        query: search,
+      });
+      setItems(items);
+      setBreadcrumbs(categories);
+    } catch (error) {
+      setIsError(true);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div className={styles.productListContent}>
-      {items.map((item) => (
-        <ProductItem
-          key={item.id}
-          url={item.picture_url}
-          title={item.title}
-          price={item.price.amount}
-        />
-      ))}
+      {isLoading ? (
+        <Loading />
+      ) : isError ? (
+        <Error />
+      ) : (
+        items?.map((item) => (
+          <ProductItem
+            id={item.id}
+            flag={item.free_shipping}
+            key={item.id}
+            url={item.picture_url}
+            title={item.title}
+            priceAmount={item.price.amount}
+          />
+        ))
+      )}
     </div>
   );
 }

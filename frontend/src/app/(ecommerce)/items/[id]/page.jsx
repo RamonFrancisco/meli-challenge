@@ -1,32 +1,67 @@
-import styles from "@/app/styles/pages/ProductItem.module.scss";
+"use client";
 
-export default function ProductItem() {
+import Error from "@/app/components/error";
+import Loading from "@/app/components/loading";
+import { useBreadcrumb } from "@/app/context/breadcrumb-context";
+import ProductServices from "@/app/services/Product";
+import styles from "@/app/styles/pages/ProductItem.module.scss";
+import { useState, useCallback, useEffect } from "react";
+
+export default function ProductItem({ params }) {
+  const [product, setProduct] = useState({});
+  const [isLoading, setLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const { setBreadcrumbs } = useBreadcrumb();
+  const { id } = params;
+
+  const getData = useCallback(async () => {
+    setLoading(true);
+    try {
+      const { item, categories } = await ProductServices.getProduct({ id });
+      setProduct(item);
+      setBreadcrumbs(categories);
+    } catch (error) {
+      setIsError(true);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div className={styles.productContent}>
-      <div className={styles.productHero}>
-        <div className={styles.productHeroImage}>
-          <img src="/image.png" />
-        </div>
-        <div className={styles.productHeroData}>
-          <span>Nuevo - 330 vendidos</span>
-          <h2>Deco Reverse Sombrero Oxford</h2>
-          <p>
-            $ 1.980
-            <span>00</span>
-          </p>
-          <button type="button">Comprar</button>
-        </div>
-      </div>
+      {isLoading ? (
+        <Loading />
+      ) : isError ? (
+        <Error />
+      ) : (
+        <>
+          <div className={styles.productHero}>
+            <div className={styles.productHeroImage}>
+              <img src={product.picture_url} />
+            </div>
+            <div className={styles.productHeroData}>
+              <span>
+                {product.condition} - {product.sold_qty} vendidos
+              </span>
+              <h2>{product.title}</h2>
+              <p>
+                $ {product.price?.amount}
+                <span>{product.price?.decimals}</span>
+              </p>
+              <button type="button">Comprar</button>
+            </div>
+          </div>
 
-      <div className={styles.productDescription}>
-        <h3>Description del Producto</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque,
-          fugiat qui nemo amet eum reiciendis. Adipisci atque voluptatem ullam
-          excepturi porro, debitis laborum eligendi optio? Doloribus maiores
-          labore repudiandae at.
-        </p>
-      </div>
+          <div className={styles.productDescription}>
+            <h3>Descrição do produto</h3>
+            <p>{product.description}</p>
+          </div>
+        </>
+      )}
     </div>
   );
 }
