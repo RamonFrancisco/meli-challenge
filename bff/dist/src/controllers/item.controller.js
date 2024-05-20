@@ -12,7 +12,7 @@ class ItemController {
             return res.status(200).json(item);
         }
         catch (err) {
-            return res.status(500).json({ message: 'Internal server error' });
+            return res.status(500).json({ message: "Internal server error" });
         }
     }
     async searchItem(req, res) {
@@ -24,7 +24,7 @@ class ItemController {
             return res.status(200).json(item);
         }
         catch (err) {
-            return res.status(500).json({ message: 'Internal server error' });
+            return res.status(500).json({ message: "Internal server error" });
         }
     }
 }

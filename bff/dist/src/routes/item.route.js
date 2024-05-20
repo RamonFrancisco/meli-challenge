@@ -12,6 +12,6 @@ const makeItemController = () => {
     return new item_controller_1.ItemController(itemService);
 };
 exports.default = (router) => {
-    router.get('/items', async (req, res) => await makeItemController().searchItem(req, res));
-    router.get('/items/:id', async (req, res) => await makeItemController().getItem(req, res));
+    router.get("/items", async (req, res) => await makeItemController().searchItem(req, res));
+    router.get("/items/:id", async (req, res) => await makeItemController().getItem(req, res));
 };

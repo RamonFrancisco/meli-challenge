@@ -34,7 +34,7 @@ const setupApp = () => {
     const app = (0, express_1.default)();
     // Middlewares
     app.use((0, cors_1.default)({
-        origin: '*',
+        origin: "*",
         methods: ["GET"],
         allowedHeaders: ["Content-Type", "Authorization", "Accept"],
     }));
