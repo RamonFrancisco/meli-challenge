@@ -1,14 +1,26 @@
+"use client";
+
 import React from "react";
 import styles from "@/app/styles/components/Breadcrumb.module.scss";
-
-const categories = ["celulares", "Motorola", "32GB"];
+import { useBreadcrumb } from "@/app/context/breadcrumb-context";
 
 export default function Breadcrumb() {
+  const { breadcrumbs } = useBreadcrumb();
+  const lastItem = (index) => breadcrumbs.length - 1 !== index;
+
   return (
     <nav className={styles.breadcrumbContent}>
-      {categories.map((category) => (
+      {breadcrumbs.map((breadcrumb, index) => (
         <>
-          <span>{category}</span> &gt;
+          <span
+            className={!lastItem(index) && styles.breadcrumbItemLast}
+            key={index}
+          >
+            {breadcrumb}
+          </span>
+          <span className={styles.breadcrumbSeparator}>
+            {lastItem(index) && ">"}
+          </span>
         </>
       ))}
     </nav>
