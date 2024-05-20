@@ -1,34 +1,54 @@
 @import "variables";
 
 .header {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, 1fr);
   justify-content: center;
+  align-content: center;
   align-items: center;
-  background-color: $color-primary;
-  padding: 1rem 0;
+  background-color: $color-yellow;
+  padding: 1rem 20px;
+  gap: 5px;
+
+  @media screen and (min-width: 660px) {
+    grid-template-columns: minmax(auto, 100px) minmax(700px, 920px);
+    grid-template-areas: "header__logo header__search";
+    grid-template-rows: auto;
+  }
 }
 
 .logo {
-  max-width: 100px;
-  width: 100%;
-  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .form {
   display: flex;
-  max-width: 980px;
   width: 100%;
 
   label {
     position: absolute;
-
     z-index: -1;
     overflow: hidden;
   }
 
   input {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    color: $color-black;
     padding: 16px;
     border: 0;
     width: 100%;
+    outline: 0;
+  }
+
+  button {
+    background-color: $color-white-grey;
+    padding: 16px;
+    border: 0;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    cursor: pointer;
   }
 }

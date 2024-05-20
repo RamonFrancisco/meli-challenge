@@ -1,29 +1,50 @@
 @import "../variables.scss";
 
 .productContent {
-  padding: $padding-size;
   background-color: $color-white;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 860px;
   width: 100%;
+
+  @media screen and (min-width: 660px) {
+    padding: $padding-size;
+  }
 }
 
 .productHero {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, 1fr);
+
+  @media screen and (min-width: 660px) {
+    grid-template-columns: minmax(auto, 680px) minmax(auto, 250px);
+    grid-template-rows: auto;
+  }
 }
 
 .productHeroImage {
-  flex-basis: 1;
-  max-width: 680px;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 320px;
+
+    @media screen and (min-width: 660px) {
+      max-width: 680px;
+    }
+  }
 }
 
 .productHeroData {
-  padding-top: $padding-size;
+  padding: $padding-size;
   display: flex;
   flex-direction: column;
+
+  @media screen and (min-width: 660px) {
+    padding-top: $padding-size;
+  }
 
   span {
     font-size: 14px;
@@ -31,17 +52,28 @@
   }
 
   h2 {
-    font-size: 24px;
-    line-height: 24px;
+    font-size: 20px;
+    line-height: 20px;
     font-weight: 600;
+
+    @media screen and (min-width: 660px) {
+      font-size: 24px;
+      line-height: 24px;
+    }
   }
 
   p {
-    padding: $padding-size 0;
-    font-size: 46px;
+    padding: 16px 0;
+    font-size: 28px;
     font-weight: 400;
 
+    @media screen and (min-width: 660px) {
+      font-size: 46px;
+      padding: $padding-size 0;
+    }
+
     span {
+      font-weight: 400;
       vertical-align: text-top;
     }
   }
@@ -52,16 +84,23 @@
     background-color: $color-blue;
     font-weight: 700;
     font-size: 16px;
-    max-width: 250px;
     width: 100%;
     padding: 10px 0;
     border-radius: 6px;
+
+    @media screen and (min-width: 660px) {
+      max-width: 250px;
+    }
   }
 }
 
 .productDescription {
-  max-width: 680px;
-  padding-top: $padding-size;
+  padding: $padding-size;
+
+  @media screen and (min-width: 660px) {
+    padding: $padding-size 0 0;
+  }
+
   h3 {
     font-size: 28px;
     font-weight: 300;
@@ -70,5 +109,6 @@
   p {
     font-size: 16px;
     padding: $padding-size 0;
+    color: $color-grey;
   }
 }
