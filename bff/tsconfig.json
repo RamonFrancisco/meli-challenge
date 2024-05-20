@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "./api",
     "module": "CommonJS",
     "target": "ES2019",
     "esModuleInterop": true,
@@ -9,11 +9,6 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": [
-    "bin",
-    "src"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["bin", "src"],
+  "exclude": ["node_modules"]
 }
