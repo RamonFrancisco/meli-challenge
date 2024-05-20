@@ -1,0 +1,49 @@
+{
+  "items": {
+    "categories": ["celulares", "Motorola", "32GB"],
+    "items": [
+      {
+        "id": "123",
+        "title": "Moto G6 Muito Conservado 64gbtela 5.7 Vejam As Fotos ",
+        "price": {
+          "currency": "BRL",
+          "amount": 1840,
+          "decimals": 0
+        },
+        "picture_url": "https://http2.mlstatic.com/D_607581-MLA74463235934_022024-O.jpg",
+        "condition": "new",
+        "free_shipping": true,
+        "sold_qty": 331,
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, eius? Porro inventore ducimus doloremque saepe earum alias rem, totam natus ad placeat non, facilis error? Rem numquam sapiente veritatis tenetur."
+      },
+      {
+        "id": "431",
+        "title": "Moto G5 Muito Conservado 64gbtela 5.7 Vejam As Fotos ",
+        "price": {
+          "currency": "BRL",
+          "amount": 5555,
+          "decimals": 0
+        },
+        "picture_url": "https://http2.mlstatic.com/D_607581-MLA74463235934_022024-O.jpg",
+        "condition": "new",
+        "free_shipping": false,
+        "sold_qty": 12,
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, eius? Porro inventore ducimus doloremque saepe earum alias rem, totam natus ad placeat non, facilis error? Rem numquam sapiente veritatis tenetur."
+      },
+      {
+        "id": "431",
+        "title": "Moto G5 Muito Conservado 64gbtela 5.7 Vejam As Fotos ",
+        "price": {
+          "currency": "BRL",
+          "amount": 555555,
+          "decimals": 0
+        },
+        "picture_url": "https://http2.mlstatic.com/D_607581-MLA74463235934_022024-O.jpg",
+        "condition": "new",
+        "free_shipping": true,
+        "sold_qty": 44,
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, eius? Porro inventore ducimus doloremque saepe earum alias rem, totam natus ad placeat non, facilis error? Rem numquam sapiente veritatis tenetur."
+      }
+    ]
+  }
+}
