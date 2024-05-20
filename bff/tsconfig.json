@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "module": "CommonJS",
+    "target": "ES2019",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "bin",
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
