@@ -6,41 +6,41 @@ interface MeliItemPicture {
 }
 
 interface MeliBaseItem {
-  id: string,
-  title: string,
-  category_id: string,
-  price: number,
-  currency_id: string,
-  condition: string,
+  id: string;
+  title: string;
+  category_id: string;
+  price: number;
+  currency_id: string;
+  condition: string;
   shipping: {
-    free_shipping: boolean
-  }
+    free_shipping: boolean;
+  };
 }
 
 export type MeliItemDetails = {
-  pictures: MeliItemPicture[],
-  description: string,
-  initial_quantity: number
+  pictures: MeliItemPicture[];
+  description: string;
+  initial_quantity: number;
 } & MeliBaseItem;
 
 export type MeliSearchItem = {
-  thumbnail: string
+  thumbnail: string;
 } & MeliBaseItem;
 
 const getPrice = (currency: string, itemPrice: number) => {
-  const [amount, decimals] = String(itemPrice).split('.');
+  const [amount, decimals] = String(itemPrice).split(".");
   const price: Price = {
     currency,
     amount: Number(amount),
-    decimals: Number(decimals)
-  }
+    decimals: Number(decimals),
+  };
   return price;
-}
+};
 
 export class ItemAdapter {
   adaptItem(meliItem: MeliItemDetails): Item {
     const price = getPrice(meliItem.currency_id, meliItem.price);
-    const pictureUrl = meliItem.pictures.length ? meliItem.pictures[0].url : '';
+    const pictureUrl = meliItem.pictures.length ? meliItem.pictures[0].url : "";
     // return new Item(meliItem.id, meliItem.title, price, pictureUrl, meliItem.condition, meliItem.shipping.free_shipping, meliItem.description, meliItem.initial_quantity);
 
     return {
@@ -51,8 +51,8 @@ export class ItemAdapter {
       condition: meliItem.condition,
       free_shipping: meliItem.shipping.free_shipping,
       description: meliItem.description,
-      sold_qty: meliItem.initial_quantity
-    }
+      sold_qty: meliItem.initial_quantity,
+    };
   }
 
   adaptSearchItem(meliItem: MeliSearchItem): Item {
@@ -65,7 +65,7 @@ export class ItemAdapter {
       price,
       picture_url: meliItem.thumbnail,
       condition: meliItem.condition,
-      free_shipping: meliItem.shipping.free_shipping
-    }
+      free_shipping: meliItem.shipping.free_shipping,
+    };
   }
 }
