@@ -9,6 +9,6 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["bin", "src"],
+  "include": ["api", "src"],
   "exclude": ["node_modules"]
 }

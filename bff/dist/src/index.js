@@ -22,11 +22,25 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-const PORT = process.env.PORT || 3333;
-(async () => {
-    const { setupApp } = await Promise.resolve().then(() => __importStar(require("../api")));
-    const app = setupApp();
-    app.listen(PORT, () => {
-        console.log(`App running on port ${PORT}`);
-    });
-})();
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.setupApp = void 0;
+const express_1 = __importStar(require("express"));
+const cors_1 = __importDefault(require("cors"));
+const routes_1 = require("./config/routes");
+const setupApp = () => {
+    const app = (0, express_1.default)();
+    // Middlewares
+    app.use((0, cors_1.default)({
+        origin: "*",
+        methods: ["GET"],
+        allowedHeaders: ["Content-Type", "Authorization", "Accept"],
+    }));
+    app.use((0, express_1.json)());
+    app.use(express_1.default.urlencoded({ extended: true }));
+    (0, routes_1.setupRoutes)(app);
+    return app;
+};
+exports.setupApp = setupApp;
