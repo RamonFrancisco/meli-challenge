@@ -24,7 +24,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 const PORT = process.env.PORT || 3333;
 (async () => {
-    const { setupApp } = await Promise.resolve().then(() => __importStar(require('../src/app')));
+    const { setupApp } = await Promise.resolve().then(() => __importStar(require("../src/index")));
     const app = setupApp();
     app.listen(PORT, () => {
         console.log(`App running on port ${PORT}`);
