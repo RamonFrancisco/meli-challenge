@@ -1,0 +1,17 @@
+@import "../variables";
+
+.errorContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $color-grey;
+
+  h2 {
+    line-height: 32px;
+    font-size: 32px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
